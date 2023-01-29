@@ -41,7 +41,7 @@ pwmValue == 255 ? ledStatus = true: ledStatus = false;
 ```
 A operação ternária funciona basicamente como um **if e else**, mas tudo isso em uma unica linha:
 ```
-**condição** ? **se verdadeiro** : **se falso**
+condição ? se verdadeiro : se falso
 ```
 Para apagar o LED a operação é exatamente ao contrário. Ao invés de incrementar o valor, eu decremento até 0. Aqui que entra a flag **ledStatus**, evitando que durante o loop entre no **if**.
 
