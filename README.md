@@ -1,5 +1,5 @@
 # Smooth Blink Led
-## Piscando um LED usando PWM
+## Piscando um LED usando PWM - Exemplo 1
  
 Estou usando o Arduino Uno então é necessario se atentar aos pinos, pois nem todas as portas são PWM. Nessa imagem você consegue ver quais portas possuem PWM:
 
@@ -64,6 +64,28 @@ Para apagar o LED a operação é exatamente ao contrário. Ao invés de increme
 9  }
 ```
 Quando o valor zerar a flag volta ao status de falsa e o LED voltará a acender.
+
+## Exemplo 2
+Confesso que o ChatGPT me deu um bom norte nessa solução, reduzindo um pouco as linhas de código. Mas a solução 1 permite criar duas funções, uma para ligar e outra para desligar o LED, então não é totalmente descartada. Mas a solução 2 permite em algumas linhas fazer o LED acender e apagar de forma gradual, assim como no GIF no final.
+
+```
+1    if ((millis() - timer) > TIMER_DELAY)
+2    { 
+3       timer = millis();
+4
+5       pwmValue = pwmValue + brightnessDirection;
+6
+7       if (pwmValue == 0 || pwmValue == 255) 
+8       {
+9         brightnessDirection = -brightnessDirection;
+10      }
+11      analogWrite(SMOOTH_LED, pwmValue);
+12    }
+```
+
+A parte do **millis()** permanece, assim o código segue sem travar. O que vem a mais é a variavel **brightnessDirection**. Na linha 5 a variavel **pwmValue** recebe o valor dela mesma e a **direção**. Se o valor da direção for positivo o LED está acendendo e em caso negativo o LED está apagando. No **if** da linha 7 é verificado se o valor está em zero ou 255 e então a direção muda. 
+
+Caso sua intenção é apenas acender e apagar, essa solução é mais simples.
 
 Ao final, se tudo der certo você vai ter um resultado assim:
 <div align="center">
