@@ -66,7 +66,7 @@ Para apagar o LED a operação é exatamente ao contrário. Ao invés de increme
 Quando o valor zerar a flag volta ao status de falsa e o LED voltará a acender.
 
 ## Exemplo 2
-Confesso que o ChatGPT me deu um bom norte nessa solução, reduzindo um pouco as linhas de código. Mas a solução 1 permite criar duas funções, uma para ligar e outra para desligar o LED, então não é totalmente descartada. Mas a solução 2 permite em algumas linhas fazer o LED acender e apagar de forma gradual, assim como no GIF no final.
+A soluçaõ 2 é mais simples, reduzindo um pouco as linhas de código. Mas a solução 1 permite criar duas funções, uma para ligar e outra para desligar o LED, então não é totalmente descartada. Mas a solução 2 permite em algumas linhas fazer o LED acender e apagar de forma gradual, assim como no GIF no final.
 
 ```
 1    if ((millis() - timer) > TIMER_DELAY)
